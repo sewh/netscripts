@@ -15,3 +15,7 @@ jobs:
           fetch-depth: 1
       - name: Run Makefile
         run: make netscripts.tar.xz
+      - uses: actions/upload-artifact@master
+        with:
+          name: netscripts.tar.xz
+          path: netscripts.tar.xz
