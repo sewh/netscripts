@@ -1,0 +1,7 @@
+[Unit]
+Description=Bring up network interfaces with netscripts
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ns autostart
+

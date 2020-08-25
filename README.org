@@ -1,0 +1,9 @@
+* netscripts
+
+netscripts is a small script for managing network interfaces, inspired by OpenBSD's [[https://man.openbsd.org/hostname.if.5][hostname.if]] and Linux network script packages of old.
+
+** Usage
+
+Once installed, netscripts can be invoked with 'ns <interface name> <action>', for example 'ns eth0 up'. In this example, ns then looks for a script in /etc/netscripts/scripts called 'eth0-up' and executes it if it finds it. You will typically want to write 'up', 'down', and 'reload' scripts.
+
+netscripts can run network scripts automatically on boot. To do this with systemd, ensure that netscripts.timer is enabled. Then, you can enable the scripts to run with 'ns enable <interface> <action>'. For example, 'ns enable eth0 up' will cause the /etc/netscripts/scripts/eth0-up script to be run on boot. Scripts can be disabled with the 'ns disable <interface> <action>' command.
