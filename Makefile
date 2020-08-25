@@ -1,5 +1,5 @@
-netscripts.tar.xz: ns.sh LICENSE
-	tar cvJf $@ ns.sh LICENSE
+netscripts.tar.xz: ns.sh LICENSE netscripts.timer netscripts.service
+	tar cvJf $@ $^
 
 .PHONY: clean
 clean:

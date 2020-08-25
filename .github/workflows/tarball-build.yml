@@ -1,0 +1,16 @@
+name: tarball-build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Run Makefile
+        run: make netscripts.tar.xz
