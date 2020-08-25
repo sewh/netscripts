@@ -1,0 +1,27 @@
+name: tarball-build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Run Makefile
+        run: make netscripts.tar.xz
+      - uses: actions/upload-artifact@master
+        with:
+          name: netscripts.tar.xz
+          path: netscripts.tar.xz
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Latest Rolling Release"
+          files: "netscripts.tar.xz"
